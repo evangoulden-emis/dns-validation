@@ -1,0 +1,18 @@
+[project]
+name = "dns-record-validator"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "evlaa1990",email = "127751286+evangoulden-emis@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dnspython (>=2.8.0,<3.0.0)",
+    "rich (>=14.2.0,<15.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
