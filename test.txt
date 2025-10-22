@@ -1,0 +1,40 @@
+@ 21600 IN A 3.8.81.67
+academy 300 IN A 18.169.36.138
+acutedss 300 IN A 15.197.209.163
+acutedss 300 IN A 3.33.231.215
+airedalewharfedalecravenccggp 300 IN A 185.13.72.100
+alpha.beta.test 300 IN A 185.13.72.185
+analytics 300 IN A 10.207.114.119
+aos-dynamics 300 IN A 192.168.89.10
+ashfordccggp 300 IN A 185.13.72.100
+awsgp01docs2 600 IN A 10.125.32.12
+awsgp01docs3 600 IN A 10.125.32.13
+awsgp02docs2 600 IN A 10.125.39.7
+awsgp02docs3 600 IN A 10.125.39.8
+awsgp03docs2 600 IN A 10.125.39.11
+awsgp03docs3 600 IN A 10.125.39.12
+@ 300 IN SOA ns0.vlep.co.uk please_set_email.absolutely.nowhere 1034 10800 3600 2419200 900
+@ 300 IN TXT ""v=spf1 include:%{ir}.%{v}.%{d}.spf.has.pphosted.com -all""
+@ 300 IN TXT "v9pvfh7327kpl2604ilrpsnjee"
+@ 300 IN TXT "yr2lbr3ejn24si9g9toz1ehiea37jf"
+@ 300 IN TXT "urbg1c8vn02o20sh1rih6tlm85"
+@ 300 IN TXT "d1e1qeqn8l95bmublnd867h12a"
+@ 300 IN TXT "atlassian-domain-verification=0SSG/rWmm42C/WVCZi2phEzywYUuZzy5G0akU5HJu3UKomZepB8xb0Kpoke/uPcd"
+@ 300 IN TXT "knowbe4-site-verification=be95d2b58e67bcd17ea3e4b0051a22b6"
+@ 300 IN TXT "k7qpljuslvhsppo2d9q7809kjd."
+@ 300 IN TXT "apple-domain-verification=UHymu5NemmUpEW0w"
+@ 300 IN TXT "google-site-verification=MnMRQK-oxdCrRiAB6Jjrd-XEVmuVttl2840GwOLulr8"
+@ 300 IN TXT "a452a9f4472672aac70a04b2b960ad"
+@ 300 IN TXT "g6aum15ed9r62t1t8iecv4fn47"
+@ 300 IN TXT "miro-verification=d913fae4e12a83250dd3c9976f3e81403c6617cd"
+@ 300 IN TXT "smartsheet-site-validation=EPztrQHQppzzO6pxVpJpusudP0hWsoVi"
+@ 300 IN TXT "figma-domain-verification=299ce9541a638aebdd0dd13a8eed9f64c503621b684b3569e7f7a9ba1ae1e175-1741135480"
+@ 300 IN MX 10 emishealth-com.mail.protection.outlook.com.
+@ 300 IN MX 5 mxa-009c8702.gslb.pphosted.com.
+@ 300 IN MX 5 mxb-009c8702.gslb.pphosted.com.
+@ 300 IN NS ns1.mythic-beasts.com
+@ 300 IN NS ns2.mythic-beasts.com
+cds 300 IN NS ns2.mythic-beasts.com
+cds 300 IN NS ns1.vlep.co.uk
+cds 300 IN NS ns0.vlep.co.uk
+cds 300 IN NS ns1.mythic-beasts.com
