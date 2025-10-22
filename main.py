@@ -1,30 +1,60 @@
 import dns.resolver
 from rich.console import Console
 from rich.table import Table
-from pprint import pprint as pp
+import argparse
+import json
+
 
 ROUTE53_NAMESERVER = "8.8.4.4"
 GOOGLE_NAMESERVER = "8.8.8.8"
 
-nameserver_dict = {
-    "google": GOOGLE_NAMESERVER,
-    "route53": ROUTE53_NAMESERVER
-}
+
 
 dns_response_list = []
 
 
 
 def main():
-    zone = read_zone_file(file_path="./emishealth.com.converted.txt", origin="emishealth.com")
+    parser = argparse.ArgumentParser()
+    args = argument_parser(parser=parser)
+    
+    nameserver_dict = args.nameservers
+    
+    zone = read_zone_file(file_path=args.zone_file, origin=args.origin)
     for name, node in zone.nodes.items():
         for rdset in node.rdatasets:
             resolve_dns_record(nameservers=nameserver_dict, record_name=name, query_type=rdset.rdtype, dns_response_list=dns_response_list)
     
-    compare_dns_responses(dns_reponse_list=dns_response_list)
+    compare_dns_responses(dns_reponse_list=dns_response_list, output_file=args.output_file_name)
 
 
-def compare_dns_responses(dns_reponse_list: list):
+def parse_nameservers(value):
+    try:
+        return json.loads(value)
+    except json.JSONDecodeError as e:
+        raise argparse.ArgumentTypeError(f"Invalid JSON for nameservers: {e}")
+
+
+
+def argument_parser(parser: argparse.ArgumentParser) -> argparse.Namespace:
+    """Parse command line arguments entered by the user.
+
+    Args:
+        parser (argparse.ArgumentParser): Recieves a ArgumentParser object
+
+    Returns:
+        argparse.Namespace: Returns the parsed arguments as a Namespace object.
+    """
+    parser.add_argument("--zone_file", type=str, help="File path to a valid BIND formatted zonefile.")
+    parser.add_argument("--origin", type=str, help="The zone file origin domain name (e.g. google.com)")
+    parser.add_argument("--nameservers", type=parse_nameservers, help="A list of nameservers to check against")
+    parser.add_argument("--output_file_name", type=str, help="The name of the file to output results too.")
+    
+    return parser.parse_args()
+    
+
+
+def compare_dns_responses(dns_reponse_list: list, output_file_name: str):
     
     console = Console(record=True)
     table = Table(show_lines=True)
