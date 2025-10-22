@@ -16,7 +16,7 @@ dns_response_list = []
 
 
 def main():
-    zone = read_zone_file(file_path="./test.txt", origin="emishealth.com")
+    zone = read_zone_file(file_path="./emishealth.com.converted.txt", origin="emishealth.com")
     for name, node in zone.nodes.items():
         for rdset in node.rdatasets:
             resolve_dns_record(nameservers=nameserver_dict, record_name=name, query_type=rdset.rdtype, dns_response_list=dns_response_list)
@@ -26,7 +26,7 @@ def main():
 
 def compare_dns_responses(dns_reponse_list: list):
     
-    console = Console()
+    console = Console(record=True)
     table = Table(show_lines=True)
     
     table.add_column("Global Response", style="cyan", max_width=80)
@@ -37,8 +37,13 @@ def compare_dns_responses(dns_reponse_list: list):
                       str(entry.get('r53_response', "N/A")), 
                       str(entry.get('global_response') ==  entry.get('r53_response'))
         )
-
+        
+# Export to HTML
     console.print(table)
+    html = console.export_html(inline_styles=True)
+    with open("dns_table.html", "w") as f:
+        f.write(html)
+
 
 
 
