@@ -78,7 +78,9 @@ def resolve_dns_record(nameservers: dict, record_name: str, query_type: dns.rdat
             print(f"The domain name {record_name} does not exist / is not known by {v}.")
         except dns.resolver.NoNameservers:
             print(f"No nameservers are able to service this request.")
-    dns_response_list.append(rrset_data)        
+            
+    if rrset_data: # Only append the dictionary to the list if it's not empty
+        dns_response_list.append(rrset_data)        
 
 
 
