@@ -29,6 +29,17 @@ def main():
 
 
 def parse_nameservers(value):
+    """Parse JSON Encoded data to a Python Dictionary
+
+    Args:
+        value (_type_): _description_
+
+    Raises:
+        argparse.ArgumentTypeError: _description_
+
+    Returns:
+        _type_: _description_
+    """
     try:
         return json.loads(value)
     except json.JSONDecodeError as e:
@@ -40,7 +51,7 @@ def argument_parser(parser: argparse.ArgumentParser) -> argparse.Namespace:
     """Parse command line arguments entered by the user.
 
     Args:
-        parser (argparse.ArgumentParser): Recieves a ArgumentParser object
+        parser (argparse.ArgumentParser): Receives a ArgumentParser object
 
     Returns:
         argparse.Namespace: Returns the parsed arguments as a Namespace object.
