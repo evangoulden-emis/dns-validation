@@ -3,8 +3,9 @@ from rich.console import Console
 from rich.table import Table
 from pprint import pprint as pp
 
-ROUTE53_NAMESERVER = "8.8.4.4"
+ROUTE53_NAMESERVER = "205.251.199.154"
 GOOGLE_NAMESERVER = "8.8.8.8"
+
 
 nameserver_dict = {
     "google": GOOGLE_NAMESERVER,
@@ -16,7 +17,7 @@ dns_response_list = []
 
 
 def main():
-    zone = read_zone_file(file_path="./emishealth.com.converted.txt", origin="emishealth.com")
+    zone = read_zone_file(file_path="./emishealth.com.txt", origin="emishealth.com")
     for name, node in zone.nodes.items():
         for rdset in node.rdatasets:
             resolve_dns_record(nameservers=nameserver_dict, record_name=name, query_type=rdset.rdtype, dns_response_list=dns_response_list)
